@@ -1,0 +1,33 @@
+// 3x^2 +7x -10 = 0
+
+push 7
+dup
+mul
+push 4 3 -10
+mul
+mul
+minus
+sqrt
+dup
+
+push 7 -1
+mul
+swap
+minus
+push 2 3
+mul
+div
+push [x1]
+dump
+dump
+
+push 7 -1
+mul
+swap
+plus
+push 2 3
+mul
+div
+push [x2]
+dump
+dump
