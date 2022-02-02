@@ -22,12 +22,14 @@ minus
 push 2 3
 mul
 div
+
+// print [x1]
+// print value
 push [x1]
 dump
 dump
 
 // | [x2]  |
-// |SQRT(D)|
 push 7 -1
 mul
 swap
@@ -35,6 +37,9 @@ plus
 push 2 3
 mul
 div
+
+// print [x2]
+// print value
 push [x2]
 dump
 dump
