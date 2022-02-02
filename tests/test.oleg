@@ -1,7 +1,7 @@
 // 3x^2 +7x -10 = 0
 
-// SQRT(D)
-// SQRT(D)
+// |SQRT(D)|
+// |SQRT(D)|
 
 push 7
 dup
@@ -13,7 +13,8 @@ minus
 sqrt
 dup
 
-// [x1]
+// | [x1]  |
+// |SQRT(D)|
 push 7 -1
 mul
 swap
@@ -25,7 +26,8 @@ push [x1]
 dump
 dump
 
-// [x2]
+// | [x2]  |
+// |SQRT(D)|
 push 7 -1
 mul
 swap
