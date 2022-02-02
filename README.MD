@@ -1,6 +1,6 @@
 ## OLEG Programing Language
 
-# Stack-based
+# Stack-based language with python simulation
 
 Done:
 - Some operations(push, pop, dup, dump etc.)
