@@ -1,2 +1,0 @@
-# OLEG
-OLEG Programming language
