@@ -1,4 +1,4 @@
-## Helman Programming Language (.HL)
+## Helman Programming Language (.hl)
 
 # Stack-based language with Python simulation
 
