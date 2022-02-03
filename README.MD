@@ -1,4 +1,4 @@
-## OLEG Programing Language
+## Helman Programing Language
 
 # Stack-based language with Python simulation
 
