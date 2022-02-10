@@ -1,6 +1,6 @@
-## Helman Programing Language
+## OLEG Programing Language
 
-# Stack-based language with Python simulation
+# Stack-based
 
 Done:
 - Some operations(push, pop, dup, dump etc.)

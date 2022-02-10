@@ -1,0 +1,48 @@
+// 3xx + 7x - 10 = 0
+
+push 7 7
+mul
+// 7 7 *
+
+push 4 3 -10
+mul
+mul
+// 4 3 -10 * *
+
+minus
+sqrt
+dup
+// - sqrt dup
+
+push -7
+swap
+minus
+push 2 3
+mul
+div
+push [x1]
+dump
+dump
+
+// -7 swap - 2 3 * / [x1] dump dump
+
+push -7
+swap
+plus
+push 2 3
+mul
+div
+push [x2]
+dump
+dump
+
+// 7 7 *
+// 4 3 -10 * *
+// - sqrt dup
+// -7 swap - 2 3 * / "[x1]" dump dump
+// -7 swap + 2 3 * / "[x2]" dump dump
+
+// push (7 * 7) - (4 - 3 * -10) sqrt
+
+
+push (7 * 7 - 4 * 3 * -10)
