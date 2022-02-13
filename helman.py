@@ -1,5 +1,6 @@
 from multipledispatch import dispatch as override
 from colorama import Fore, Back, Style
+import time
 import sys
 import os
 import stack
@@ -77,7 +78,8 @@ def dump():
     return "OP_DUMP",
 
 
-def simulate(program: list[str, int]) -> int:
+def simulate(program: list) -> int:
+    t_start = time.perf_counter_ns()
     assert OP_COUNTER == 12, Fore.CYAN + "Some operations are not implemented!"
 
     base = stack.Stack()
@@ -119,8 +121,8 @@ def simulate(program: list[str, int]) -> int:
                     base.push(base.peek())
 
                 case "OP_DUMP":
-                    print(base.peek(), end='\n')
-                    base.pop()
+                    print(base.pop(), end='\n')
+
 
         except OverflowError:
             print()
@@ -128,7 +130,6 @@ def simulate(program: list[str, int]) -> int:
                   f"{op[1]} : {0} : {op[0][0]} : STACK UNDERFLOW!")
             print(Fore.RED +
                   "PROGRAM TERMINATED!")
-            base.debug()
             exit(1)
 
         except TypeError:
@@ -137,8 +138,9 @@ def simulate(program: list[str, int]) -> int:
                   f"{op[1]} : {0} : {op[0][0]} : TYPE INTERACTION ERROR!")
             print(Fore.RED +
                   "PROGRAM TERMINATED!")
-            base.debug()
             exit(1)
+    t_end = time.perf_counter_ns()
+    print(format((t_end - t_start) / (10 ** 9), '.8f'), "sec <<<< SIM <<<<<")
     return 0
 
 
@@ -210,7 +212,7 @@ def parseFile(file_path: str) -> list[str, int]:
 def checkFilePath(file_path: str) -> bool:
     if os.path.isdir(file_path):
         return False
-    if (len(file_path) - file_path.rfind('.oleg')) != 5:
+    if (len(file_path) - file_path.rfind('.hl')) != 3:
         return False
     return True
 
@@ -218,7 +220,7 @@ def checkFilePath(file_path: str) -> bool:
 def callUsageError(error: str, program=None):
     if program is None:
         print(Fore.YELLOW + "Usage:                                                       \n"
-                            "  PROGRAM CALL   --  ./oleg.py FILE_PATH RUN_MODE            \n"
+                            "  PROGRAM CALL   --  ./hl.py FILE_PATH RUN_MODE            \n"
                             "                                                             \n"
                             "  FILE_PATH      --  FILENAME.oleg                           \n"
                             "                                                             \n"
@@ -227,7 +229,7 @@ def callUsageError(error: str, program=None):
     else:
         print(Fore.YELLOW + "Usage:                                                       \n"
                             f"  TRACEBACK      --  {program}                              \n"
-                            "  PROGRAM CALL   --  ./oleg.py FILE_PATH RUN_MODE            \n"
+                            "  PROGRAM CALL   --  ./hl.py FILE_PATH RUN_MODE            \n"
                             "                                                             \n"
                             "  FILE_PATH      --  FILENAME.oleg                           \n"
                             "                                                             \n"
@@ -265,5 +267,10 @@ def argv_parser(argv):
 
 
 if __name__ == '__main__':
+    t_start = time.perf_counter_ns()
     code = argv_parser(sys.argv)
+    t_end = time.perf_counter_ns()
+
+    print(format((t_end - t_start) / (10 ** 9), '.8f'), "sec <<<< ALL <<<<")
+
     exit(code)
