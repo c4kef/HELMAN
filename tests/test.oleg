@@ -1,0 +1,45 @@
+// 3x^2 +7x -10 = 0
+
+// |SQRT(D)|
+// |SQRT(D)|
+
+push 7
+dup
+mul
+push 4 3 -10
+mul
+mul
+minus
+sqrt
+dup
+
+// | [x1]  |
+// |SQRT(D)|
+push 7 -1
+mul
+swap
+minus
+push 2 3
+mul
+div
+
+// print [x1]
+// print value
+push [x1]
+dump
+dump
+
+// | [x2]  |
+push 7 -1
+mul
+swap
+plus
+push 2 3
+mul
+div
+
+// print [x2]
+// print value
+push [x2]
+dump
+dump
